@@ -8,24 +8,67 @@
 // @run-at       document-start
 // ==/UserScript==
 
-setTimeout(function(){
-    console.log('Hooking up!');
 
-    $(function(){
-        var r= $('<br/><a id="clsBtn" class="tag" style="cursor:pointer;">Limpar Chat</a><a id="clsiBtn" class="tag" style="cursor:pointer;">Remover Imagens/Videos</a>');
-        $("#room-tags").append(r);
+ $(function(){
 
-        $("#clsBtn").click(function (e) {
-            $("div.monologue").remove();
-            $("div.system-message").remove();
-            event.preventDefault();
-        });
+    setTimeout(function(){
 
-        $("#clsiBtn").click(function (e) {
-            $("div.ob-image > a").addClass('deleted').text('(Image removed)');
-            $("div.ob-youtube > a").addClass('deleted').text('(Video removed)');
-        });
-    });
-}, 1000);
+        console.log('Hooking up!');
+
+           // jQueryize the element criation :D
+           // Magaiver dus jQuery
+
+            var r = $('<br/>').after({
+
+                html: [
+
+                    $('<a/>', {
+                        'id' : 'clsBtn',
+                        'class' : 'tag',
+                        'html'  : 'Limpar Chat',
+                        'css': {
+                            'cursor' : 'pointer'
+                        }
+                    }),
+
+                    $('<a/>', {
+
+                        'class' : 'tag',
+                        'id' : 'clsiBtn',
+                        'html' : 'Remover Imagens/Videos',
+                        'css': {
+                            'cursor' : 'pointer'
+                        }
+                    })
+                ]
+                
+            });
+
+            $("#room-tags").append(r);
+
+            $("#clsBtn").click(function (e) {
+                $("div.monologue").remove();
+                $("div.system-message").remove();
+                e.preventDefault();
+            });
+
+            $("#clsiBtn").click(function (e) {
+
+                var $imageA = $("div.ob-image > a"),
+                    $youtubeA = $("div.ob-youtube > a");
+
+                // $("div.ob-image > a").addClass('deleted').text('(Image removed)');
+                // $("div.ob-youtube > a").addClass('deleted').text('(Video removed)');
+
+                $imageA.add($youtubeA).addClass('deleted');
+
+                $imageA.text('(Image removed)');
+
+                $youtubeA.text('(Video removed)');
+            });
+       
+    }, 1000);
+
+ });
 
 // "Para funcionar no IE, baixe o Chrome" - emanuelsn
