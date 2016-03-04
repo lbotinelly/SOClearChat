@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.1
+// @version      0.3.2
 // @author       OnoSendai
 // @match        http://chat.stackexchange.com/rooms/*
 // @match        https://chat.stackexchange.com/rooms/*
@@ -40,7 +40,7 @@ setTimeout(function(){
         })();
 
 
-        sheet.insertRule(".hoverable { display: none; position: absolute; z-index: 1; bottom: 30px; border: 4px solid white;}", 0);
+        sheet.insertRule(".hoverable { display: none; position: absolute; z-index: 1; left: -142px; top:-1px; border: 4px solid white; width:128px;}", 0);
         sheet.insertRule("a:hover .hoverable { display: block; }", 0);
         
         function doThumbnails(){
@@ -58,7 +58,7 @@ setTimeout(function(){
 
                 $(this).addClass('thumbified');
                 
-                var img = $('<img>',{src: this.href, height:'80px', class:'hoverable'});
+                var img = $('<img>',{src: this.href, class:'hoverable'});
                 
                 $(this).append(img);
             });
@@ -74,5 +74,3 @@ setTimeout(function(){
 }, 1000);
 
 // "Para funcionar no IE, baixe o Chrome" - emanuelsn
-
-// Changelog:
