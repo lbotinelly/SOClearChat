@@ -41,9 +41,9 @@ setTimeout(function(){
                 '   position: absolute;' +
                 '   z-index: 1;' +
                 '   left: -142px;' +
-                '   top:-1px;' +
+                '   bottom: -1px;' +
                 '   border: 4px solid white;' +
-                '   width:128px;' +
+                '   width: 128px;' +
                 '} ' +
                 'a:hover .hoverable {' +
                 '   display: block;' +
