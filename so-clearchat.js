@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.3
+// @version      0.3.4
 // @author       OnoSendai
-// @match        http://chat.stackexchange.com/rooms/*
-// @match        https://chat.stackexchange.com/rooms/*
+// @match        *://chat.stackoverflow.com/*
+// @match        *://chat.meta.stackexchange.com/*
+// @match        *://chat.stackexchange.com/*
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
