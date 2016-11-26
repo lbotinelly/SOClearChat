@@ -44,6 +44,7 @@ setTimeout(function(){
                 '   bottom: -1px;' +
                 '   border: 4px solid white;' +
                 '   width: 128px;' +
+                '   box-shadow: 0 0 3px rgba(0,0,0,0.85);' +
                 '} ' +
                 'a:hover .hoverable {' +
                 '   display: block;' +
