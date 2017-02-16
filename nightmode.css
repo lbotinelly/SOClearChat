@@ -93,3 +93,20 @@ body.nightmode .monologue.mine .signature {
 body.nightmode .monologue.mine .messages {
     background-color: #494952;
 }
+
+
+body.nightmode .ob-wikipedia, .ob-amazon, .ob-gist, .ob-message, .ob-lpadbug, .ob-manpage, .ob-blog, .ob-exception, .ob-anime {
+    background-color: #494952;
+    color: #fff;
+}
+
+body.nightmode #input-area{
+    background:inherit;
+}
+
+body.nightmode #input{
+    background-color:black;
+    color:#00ff00;
+    text-shadow: 0 0 12px #0f0;
+    border:1px solid #444;
+}
