@@ -82,7 +82,7 @@ body.nightmode .ob-post {
         }
 
 
-body.nightmode .info a {
+body.nightmode #info a {
     color: White;
 }
 
@@ -95,7 +95,7 @@ body.nightmode .monologue.mine .messages {
 }
 
 
-body.nightmode .ob-wikipedia, .ob-amazon, .ob-gist, .ob-message, .ob-lpadbug, .ob-manpage, .ob-blog, .ob-exception, .ob-anime {
+body.nightmode .ob-wikipedia, body.nightmode .ob-amazon, body.nightmode .ob-gist, body.nightmode .ob-message, body.nightmode .ob-lpadbug, body.nightmode .ob-manpage, body.nightmode .ob-blog, body.nightmode .ob-exception, body.nightmode .ob-anime {
     background-color: #494952;
     color: #fff;
 }
@@ -109,4 +109,9 @@ body.nightmode #input{
     color:#00ff00;
     text-shadow: 0 0 12px #0f0;
     border:1px solid #444;
+}
+
+body.nightmode .monologue .timestamp {
+    color: #0f0;
+    background-color: #222;
 }
