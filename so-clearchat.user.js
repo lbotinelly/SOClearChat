@@ -1,16 +1,21 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.5
+// @version      0.3.6
 // @author       OnoSendai
 // @match        *://chat.stackoverflow.com/*
 // @match        *://chat.meta.stackexchange.com/*
 // @match        *://chat.stackexchange.com/*
+// @resource     customCSS nightmode.css
 // @grant        GM_addStyle
+// @grant        GM_getResourceText
 // @run-at       document-start
 // ==/UserScript==
 
-GM_addStyle('body.nightmode#chat-body{background-color:#1e1e1e;background-image:none;color:#fff}body.nightmode #chat-body #searchbox,body.nightmode .messages{background-color:#3f3f46}body.nightmode #sidebar{color:#d0d0d0}body.nightmode a{color:#b2770a}body.nightmode a:hover{color:orange}body.nightmode .messages{-ms-border-radius:4px;border-radius:4px;color:#fff;border-width:0}#sidebar #info #roomtitle{text-shadow:0 1px 0 #666}.flair{color:#888}');
+var newCSS = GM_getResourceText ("customCSS");
+GM_addStyle (newCSS);
+
+// GM_addStyle('body.nightmode#chat-body{background-color:#1e1e1e;background-image:none;color:#fff}body.nightmode #chat-body #searchbox,body.nightmode .messages{background-color:#3f3f46}body.nightmode #sidebar{color:#d0d0d0}body.nightmode a{color:#b2770a}body.nightmode a:hover{color:orange}body.nightmode .messages{-ms-border-radius:4px;border-radius:4px;color:#fff;border-width:0}body.nightmode #sidebar #info #roomtitle{text-shadow:0 1px 0 #666}body.nightmode .flair{color:#888}body.nightmode .message.neworedit{color:#fff;text-shadow:0 0 8px #fff}body.nightmode div#starred-posts>div>ul>li{border-bottom:1px dotted #3f3f46}body.nightmode div.reply-child,body.nightmode div.reply-parent{background-color:#55555e}body.nightmode .monologue.catchup-marker{border-top-width:1px}body.nightmode .monologue.catchup-marker-1{border-top-color:#3f3f46}body.nightmode .mention{background-color:inherit;color:orange;text-shadow:0 0 16px orange}body.nightmode .ob-post{padding:.8em 1.5em;background-color:#666;color:#eee}body.nightmode .ob-post a{color:#7cF!important}body.nightmode .ob-post a:hover{text-shadow:0 0 16px #7cF !important}');
 
 setTimeout(function(){
     console.log('Hooking up!');
