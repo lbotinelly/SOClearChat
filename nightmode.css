@@ -1,0 +1,37 @@
+body.nightmode#chat-body {
+    background-color: #1e1e1e;
+    background-image: none;
+    color: #ffffff;
+}
+
+body.nightmode #sidebar {
+    color: #d0d0d0;
+}
+
+body.nightmode a {
+    color: #b2770a;
+}
+
+    body.nightmode a:hover {
+        color: orange;
+    }
+
+body.nightmode .messages {
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #3f3f46;
+    color: #ffffff;
+    border-width: 0px;
+}
+
+body.nightmode #chat-body #searchbox {
+    background-color: #3f3f46;
+}
+
+#sidebar #info #roomtitle {
+    text-shadow: 0px 1px 0px #666;
+}
+
+.flair {
+    color: #888;
+}
