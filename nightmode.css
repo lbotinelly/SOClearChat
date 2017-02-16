@@ -69,7 +69,7 @@ body.nightmode .mention {
 
 body.nightmode .ob-post {
     padding: 0.8em 1.5em;
-    background-color: #666;
+    background-color: inherit;
     color: #eee;
 }
 
