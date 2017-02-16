@@ -1,22 +1,27 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.4
+// @version      0.3.5
 // @author       OnoSendai
 // @match        *://chat.stackoverflow.com/*
 // @match        *://chat.meta.stackexchange.com/*
 // @match        *://chat.stackexchange.com/*
-// @grant        none
+// @grant        GM_addStyle
 // @run-at       document-start
 // ==/UserScript==
+
+GM_addStyle('body.nightmode#chat-body{background-color:#1e1e1e;background-image:none;color:#fff}body.nightmode #chat-body #searchbox,body.nightmode .messages{background-color:#3f3f46}body.nightmode #sidebar{color:#d0d0d0}body.nightmode a{color:#b2770a}body.nightmode a:hover{color:orange}body.nightmode .messages{-ms-border-radius:4px;border-radius:4px;color:#fff;border-width:0}#sidebar #info #roomtitle{text-shadow:0 1px 0 #666}.flair{color:#888}');
 
 setTimeout(function(){
     console.log('Hooking up!');
 
     $(function () {
+        
         var r = $('<a title="Clear this chat window" href="javascript:void(0);" id="soc_clr">clear</a> | ' +
-                 '<a title="Clear this chat window" href="javascript:void(0);" id="soc_wipeimg">remove media</a>' +
+                 '<a title="Remove all media (videos, images)" href="javascript:void(0);" id="soc_wipeimg">remove media</a> | ' +
+                 '<a title="Toggle Night Mode on/off" href="javascript:void(0);" id="soc_nightmode">night mode</a>' + 
                  '<span> | </span>');
+        
 
         $("#sidebar-menu").prepend(r);
 
@@ -32,6 +37,11 @@ setTimeout(function(){
             $("div.ob-image > a").addClass('deleted').text('(Image removed)');
             $("div.ob-youtube > a").addClass('deleted').text('(Video removed)');
             $("div.monologue .messages:contains('▒')").text('(Silly ASCII art removed)');
+        });
+
+        $("#soc_nightmode").click(function(e) {
+            e.preventDefault();
+            $("body").toggleClass('nightmode');
         });
 
         // Favorites image link-to-thumbnail monitor
