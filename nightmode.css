@@ -28,10 +28,57 @@ body.nightmode #chat-body #searchbox {
     background-color: #3f3f46;
 }
 
-#sidebar #info #roomtitle {
+body.nightmode #sidebar #info #roomtitle {
     text-shadow: 0px 1px 0px #666;
 }
 
-.flair {
+body.nightmode .flair {
     color: #888;
+}
+
+body.nightmode .message.neworedit {
+    color:#ffffff;
+    text-shadow: 0 0 8px white;
+}
+
+
+body.nightmode div#starred-posts>div>ul>li{
+border-bottom: 1px dotted #3f3f46;
+}
+
+
+body.nightmode div.reply-parent, 
+body.nightmode div.reply-child{
+    background-color:#55555e;
+}
+
+
+
+body.nightmode .monologue.catchup-marker{
+    border-top-width:1px;
+}
+
+
+body.nightmode .monologue.catchup-marker-1{
+    border-top-color: #3f3f46;
+}
+
+body.nightmode .mention {
+    background-color: inherit;
+    color: orange;
+    text-shadow: 0 0 16px orange;
+}
+
+body.nightmode .ob-post {
+    padding: 0.8em 1.5em;
+    background-color: #666;
+    color: #eee;
+}
+
+body.nightmode .ob-post a{
+    color: #77ccFF !important;
+}
+
+body.nightmode .ob-post a:hover{
+    text-shadow: 0 0 16px #77ccFF;
 }
