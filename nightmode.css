@@ -37,29 +37,27 @@ body.nightmode .flair {
 }
 
 body.nightmode .message.neworedit {
-    color:#ffffff;
+    color: #ffffff;
     text-shadow: 0 0 8px white;
 }
 
 
-body.nightmode div#starred-posts>div>ul>li{
-border-bottom: 1px dotted #3f3f46;
+body.nightmode div#starred-posts > div > ul > li {
+    border-bottom: 1px dotted #3f3f46;
 }
 
-
-body.nightmode div.reply-parent, 
-body.nightmode div.reply-child{
-    background-color:#55555e;
+body.nightmode div.reply-parent,
+body.nightmode div.reply-child {
+    background-color: #55555e;
 }
 
-
-
-body.nightmode .monologue.catchup-marker{
-    border-top-width:1px;
+body.nightmode .monologue.catchup-marker {
+    border-top-width: 1px;
 }
 
-
-body.nightmode .monologue.catchup-marker-1{
+body.nightmode .monologue.catchup-marker-1,
+body.nightmode .monologue.catchup-marker-2,
+body.nightmode .monologue.catchup-marker-3 {
     border-top-color: #3f3f46;
 }
 
@@ -75,10 +73,23 @@ body.nightmode .ob-post {
     color: #eee;
 }
 
-body.nightmode .ob-post a{
-    color: #77ccFF !important;
+    body.nightmode .ob-post a {
+        color: #77ccFF !important;
+    }
+
+        body.nightmode .ob-post a:hover {
+            text-shadow: 0 0 16px #77ccFF;
+        }
+
+
+body.nightmode .info a {
+    color: White;
 }
 
-body.nightmode .ob-post a:hover{
-    text-shadow: 0 0 16px #77ccFF;
+body.nightmode .monologue.mine .signature {
+    text-shadow: 0 0 16px orange;
+}
+
+body.nightmode .monologue.mine .messages {
+    background-color: #494952;
 }
