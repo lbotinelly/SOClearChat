@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.6
+// @version      0.3.7
 // @author       OnoSendai
 // @match        *://chat.stackoverflow.com/*
 // @match        *://chat.meta.stackexchange.com/*
 // @match        *://chat.stackexchange.com/*
+// @require      http://www.openjs.com/scripts/events/keyboard_shortcuts/shortcut.js
 // @resource     customCSS nightmode.css
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
@@ -15,19 +16,16 @@
 var newCSS = GM_getResourceText ("customCSS");
 GM_addStyle (newCSS);
 
-// GM_addStyle('body.nightmode#chat-body{background-color:#1e1e1e;background-image:none;color:#fff}body.nightmode #chat-body #searchbox,body.nightmode .messages{background-color:#3f3f46}body.nightmode #sidebar{color:#d0d0d0}body.nightmode a{color:#b2770a}body.nightmode a:hover{color:orange}body.nightmode .messages{-ms-border-radius:4px;border-radius:4px;color:#fff;border-width:0}body.nightmode #sidebar #info #roomtitle{text-shadow:0 1px 0 #666}body.nightmode .flair{color:#888}body.nightmode .message.neworedit{color:#fff;text-shadow:0 0 8px #fff}body.nightmode div#starred-posts>div>ul>li{border-bottom:1px dotted #3f3f46}body.nightmode div.reply-child,body.nightmode div.reply-parent{background-color:#55555e}body.nightmode .monologue.catchup-marker{border-top-width:1px}body.nightmode .monologue.catchup-marker-1{border-top-color:#3f3f46}body.nightmode .mention{background-color:inherit;color:orange;text-shadow:0 0 16px orange}body.nightmode .ob-post{padding:.8em 1.5em;background-color:#666;color:#eee}body.nightmode .ob-post a{color:#7cF!important}body.nightmode .ob-post a:hover{text-shadow:0 0 16px #7cF !important}');
+//GM_addStyle('...');
 
 setTimeout(function(){
     console.log('Hooking up!');
 
     $(function () {
-        
         var r = $('<a title="Clear this chat window" href="javascript:void(0);" id="soc_clr">clear</a> | ' +
-                 '<a title="Remove all media (videos, images)" href="javascript:void(0);" id="soc_wipeimg">remove media</a> | ' +
-                 '<a title="Toggle Night Mode on/off" href="javascript:void(0);" id="soc_nightmode">night mode</a>' + 
-                 '<span> | </span>');
-        
-
+                  '<a title="Remove all media (videos, images)" href="javascript:void(0);" id="soc_wipeimg">remove media</a> | ' +
+                  '<a title="Toggle Night Mode on/off" href="javascript:void(0);" id="soc_nightmode">night mode</a>' + 
+                  '<span> | </span>');
         $("#sidebar-menu").prepend(r);
 
         $("#soc_clr").click(function (e) {
@@ -49,22 +47,58 @@ setTimeout(function(){
             $("body").toggleClass('nightmode');
         });
 
+
+        // Hotkeys for input
+
+        var inputElem = document.getElementById("input");
+
+        shortcut.add("Ctrl+I",function() {addDelimiters('*');},{'type':'keydown','propagate':false,'target':inputElem});
+        shortcut.add("Ctrl+B",function() {addDelimiters('**');},{'type':'keydown','propagate':false,'target':inputElem});
+        shortcut.add("Ctrl+S",function() {addDelimiters('---');},{'type':'keydown','propagate':false,'target':inputElem});
+        shortcut.add("Ctrl+Q",function() {addDelimiters('> ', true);},{'type':'keydown','propagate':false,'target':inputElem});
+
+        function addDelimiters(marker, useNewLine){
+            var o = $('#input');
+            var start = o.get(0).selectionStart;
+            var end   = o.get(0).selectionEnd;
+            var u = o.val();
+            
+            var final;
+
+            if (!useNewLine){
+                final = u.substring(0, start) + marker + u.substring(start, end) + marker + u.substring(end);
+                o.val(final);
+                o.get(0).selectionStart = start + marker.length;
+                o.get(0).selectionEnd = end + marker.length;
+            }else{
+
+                if (start !== 0) marker = "\n" + marker;
+
+                final = u.substring(0, start) + marker + u.substring(start, end) + "\n" + u.substring(end);
+                o.val(final);
+                o.get(0).selectionStart = end + marker.length;
+                o.get(0).selectionEnd = end + marker.length;
+
+            }
+        }
+
+
         // Favorites image link-to-thumbnail monitor
         var style = document.createElement("style");
 
         rules = '.hoverable {' +
-                '   display: none;' +
-                '   position: absolute;' +
-                '   z-index: 1;' +
-                '   left: -142px;' +
-                '   bottom: -1px;' +
-                '   border: 4px solid white;' +
-                '   width: 128px;' +
-                '   box-shadow: 0 0 3px rgba(0,0,0,0.85);' +
-                '} ' +
-                'a:hover .hoverable {' +
-                '   display: block;' +
-                '}';
+            '   display: none;' +
+            '   position: absolute;' +
+            '   z-index: 1;' +
+            '   left: -142px;' +
+            '   bottom: -1px;' +
+            '   border: 4px solid white;' +
+            '   width: 128px;' +
+            '   box-shadow: 0 0 3px rgba(0,0,0,0.85);' +
+            '} ' +
+            'a:hover .hoverable {' +
+            '   display: block;' +
+            '}';
 
         if (style.styleSheet) {
             style.styleSheet.cssText = rules;
