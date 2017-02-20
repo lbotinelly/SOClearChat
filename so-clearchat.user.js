@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.8
+// @version      0.3.9
 // @author       OnoSendai
 // @match        *://chat.stackoverflow.com/*
 // @match        *://chat.meta.stackexchange.com/*
@@ -16,7 +16,7 @@
 var newCSS = GM_getResourceText ("customCSS");
 GM_addStyle (newCSS);
 
-//GM_addStyle('...');
+//GM_addStyle('');
 
 setTimeout(function(){
     console.log('Hooking up!');
