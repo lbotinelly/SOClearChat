@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         SO ClearChat
 // @namespace    com.onosendai
-// @version      0.3.9
+// @version      0.3.10
 // @author       OnoSendai
 // @match        *://chat.stackoverflow.com/*
 // @match        *://chat.meta.stackexchange.com/*
 // @match        *://chat.stackexchange.com/*
+// @require      https://code.jquery.com/jquery-1.12.4.min.js
 // @require      http://www.openjs.com/scripts/events/keyboard_shortcuts/shortcut.js
 // @resource     customCSS nightmode.css
 // @grant        GM_addStyle
