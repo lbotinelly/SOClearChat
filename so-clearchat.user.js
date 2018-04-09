@@ -41,6 +41,14 @@ setTimeout(function(){
             $("div.ob-image > a").addClass('deleted').text('(Image removed)');
             $("div.ob-youtube > a").addClass('deleted').text('(Video removed)');
             $("div.monologue .messages:contains('▒')").text('(Silly ASCII art removed)');
+            
+            if ($("div.ob-tweet").length > 0) {
+                $("div.ob-tweet").each(function(i, el) {
+                    var href = $(el).find(".ob-tweet-info > a").eq(1).attr('href');
+                    $(el).html('<a rel="nofollow noopener noreferrer" style="text-decoration: none;" href="' + href + '" class="deleted">(Tweet removed)</a>');
+                });
+            }
+            
         });
 
         $("#soc_nightmode").click(function(e) {
